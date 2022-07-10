@@ -7,7 +7,7 @@ class UsersAdmin(admin.ModelAdmin):
     list_display = (
         'id', 'user_id', 'first_name', 'last_name', 'phone', 'org_name',
         'last_visit')  # если нужно смотреть группы, 'display_groups'
-    list_filter = ('created', 'link_groups')
+    list_filter = ('last_visit', 'link_groups')
     search_fields = ('first_name', 'last_name', 'phone', 'org_name')
     prepopulated_fields = {'first_name': ('last_name',)}
     # raw_id_fields = ('id',)
