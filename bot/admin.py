@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Users, Groups, Roles
+from django.utils.safestring import mark_safe
+
+from .models import Users, Groups, Roles, Inventory
 
 
 class UsersAdmin(admin.ModelAdmin):
@@ -41,7 +43,23 @@ class RolesAdmin(admin.ModelAdmin):
     ordering = ['id']  # сортировка в обратном порядке добавить -
 
 
+class InventoryAdmin(admin.ModelAdmin):
+    """
+    Настраиваем отображение инвенты
+    Отображение картинки брал здесь https://dvmn.org/encyclopedia/django/how-to-setup-image-preview/
+    """
+    list_display = ('id', 'src')
+
+    readonly_fields = ["preview"]
+    fields = ['user_id', 'org_id', 'model', 'sn', 'imei1', 'imei2', 'check_info', 'src', 'preview']
+
+    def preview(self, obj):
+        return mark_safe(f'<img src="{obj.src.url}" style="max-height: 800px;">')
+
+
 admin.site.register(Users, UsersAdmin)
 admin.site.register(Groups, GroupsAdmin)
 admin.site.register(Roles, RolesAdmin)
+admin.site.register(Inventory, InventoryAdmin)
+
 # admin.site.register(Users)

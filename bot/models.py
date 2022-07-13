@@ -74,3 +74,28 @@ class Users(models.Model):
 
     def __str__(self):
         return str(self.last_name) + ' ' + str(self.first_name)
+
+
+class Inventory(models.Model):
+    """Моделмь инвенты планшетов"""
+    src = models.ImageField(height_field=None, width_field=None, max_length=100)
+    model = models.CharField(max_length=50, null=True, blank=True)
+    org_id = models.CharField(max_length=50, null=True, blank=True)
+    shot = models.IntegerField(null=True, blank=True)
+    dlm = models.DateTimeField(null=True, blank=True)
+    sn = models.CharField(max_length=50, null=True, blank=True)
+    imei2 = models.CharField(max_length=50, null=True, blank=True)
+    check_info = models.IntegerField(null=True, blank=True)
+    imei1 = models.CharField(max_length=50, null=True, blank=True)
+    user_id = models.BigIntegerField(null=False, unique=True)
+
+    class Meta:
+        db_table = "[bot].[inventory_test]"
+        verbose_name = 'Инвентаризация'
+        verbose_name_plural = 'Инвентаризация'
+
+    def publish(self):
+        self.save()
+
+    def __str__(self):
+        return str(self.org_id)
