@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from .models import Users, Groups, Roles, Inventory, Staff
+from .models import Users, Groups, Roles
 
 
 class UsersAdmin(admin.ModelAdmin):
@@ -43,32 +43,10 @@ class RolesAdmin(admin.ModelAdmin):
     ordering = ['id']  # сортировка в обратном порядке добавить -
 
 
-# class StaffAdmin(admin.ModelAdmin):
-#     list_display = ('m4', 'm3', 'm2', 'Сектор', 'Name', 'Level',)
-#     readonly_fields = ['m4', 'm3', 'm2', 'Сектор', 'Name', 'Level', 'orgstructureid']
-
-
-class InventoryAdmin(admin.ModelAdmin):
-    """
-    Настраиваем отображение инвенты
-    Отображение картинки брал здесь https://dvmn.org/encyclopedia/django/how-to-setup-image-preview/
-    """
-    list_display = ('user_id', 'org', 'model', 'sn', 'imei1', 'imei2', 'check_info', 'file_name', 'dlm')
-    list_filter = ('check_info', 'dlm')
-    search_fields = ('org',)
-    readonly_fields = ['user_id', 'model', "preview", 'org']
-    fields = ['model', 'sn', 'imei1', 'imei2', 'check_info', 'file_name', 'preview']
-    list_select_related = ['org', ]  # для ускорения загрузки таблицы https://habr.com/ru/post/322114/
-    ordering = ['-dlm']
-
-    def preview(self, obj):
-        return mark_safe(f'<img src="{obj.file_name.url}" style="max-height: 700px;">')
-
-
 admin.site.register(Users, UsersAdmin)
 admin.site.register(Groups, GroupsAdmin)
 admin.site.register(Roles, RolesAdmin)
-admin.site.register(Inventory, InventoryAdmin)
+
 # admin.site.register(Staff, StaffAdmin)
 
 # admin.site.register(Users)
