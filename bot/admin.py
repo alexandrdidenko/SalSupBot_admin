@@ -53,12 +53,13 @@ class InventoryAdmin(admin.ModelAdmin):
     Настраиваем отображение инвенты
     Отображение картинки брал здесь https://dvmn.org/encyclopedia/django/how-to-setup-image-preview/
     """
-    list_display = ( 'user_id', 'org', 'model', 'sn', 'imei1', 'imei2', 'check_info', 'src')
+    list_display = ( 'user_id', 'org', 'model', 'sn', 'imei1', 'imei2', 'check_info', 'src','dlm')
     list_filter = ('check_info', 'dlm')
-    search_fields = ('org','model', 'sn', 'imei1', 'imei2')
+    search_fields = ('org',)
     readonly_fields = ['user_id', 'model', "preview", 'org']
     fields = ['user_id', 'model', 'sn', 'imei1', 'imei2', 'check_info', 'src', 'preview']
-
+    list_select_related = ['org', ] #
+    ordering = ['-dlm']
     def preview(self, obj):
         return mark_safe(f'<img src="{obj.src.url}" style="max-height: 800px;">')
 
