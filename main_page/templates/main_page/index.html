@@ -1,0 +1,35 @@
+{% extends 'main_page/base_template.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+
+{% block content %}
+
+<!--  скрипт для сайта гугл анализи  -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-104987959-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-104987959-1');
+</script>
+
+
+<div class="container text-center">
+    <div class="wrapper wow fadeInUp delay-05s">
+        <!--<h2 class="top-title">MyInbev</h2>-->
+        <h3 class="title">Digital Sales Support</h3>
+        <h4 class="sub-title">we are called to help our employees</h4>
+    </div>
+</div>
+</header>
+
+{% endblock %}

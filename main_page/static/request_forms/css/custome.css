@@ -1,0 +1,36 @@
+
+.navbar-default, .dropdown-menu {
+    background-color: currentColor;
+
+}
+
+.tablet {
+    margin-left: 20px;
+    margin-bottom: 25px;
+    min-height: 300px;
+}
+
+.mytable {
+    padding-top: 120px;
+    background: white;
+    font-size: smaller;
+    min-height: 92vh;
+}
+
+.my_container {
+    min-height: 92vh;
+    background-color: cornsilk;
+    /*padding-top: 130px;*/
+}
+
+.my_btn {
+    padding-left: 15px;
+
+}
+
+.name {
+    font-size: 26px;
+    font-weight: bold;
+    font-variant-caps: all-petite-caps;
+    margin-left: 560px;
+}

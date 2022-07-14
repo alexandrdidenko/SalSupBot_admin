@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>DigitalSalesSupport &ndash; {% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" href="../../static/main_page/img/gt_favicon.png" type="image/x-icon">
+
+
+    <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
+    <meta name="keywords"
+          content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,300|Open+Sans:400,600,700,300' rel='stylesheet'
+          type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../../static/main_page/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/main_page/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/main_page/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="../../static/main_page/css/style.css">
+    <!-- =======================================================
+        Theme Name: Bethany
+        Theme URL: https://bootstrapmade.com/bethany-free-onepage-bootstrap-theme/
+        Author: BootstrapMade.com
+        Author URL: https://bootstrapmade.com
+    ======================================================= -->
+</head>
+<body>
+
+<!--старт прелоадера страницы-->
+<div class="preloader"></div>
+<!--старт прелоадера страницы-->
+
+<!--header-->
+<header class="main-header" id="header">
+    <div class="bg-color">
+        <!--nav-->
+        <nav class="nav navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#mynavbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="fa fa-bars"></span>
+                        </button>
+                        <a href="/" class="navbar-brand">Digital Sales Support</a>
+                    </div>
+                    {% if username %}
+                    <div class="collapse navbar-collapse navbar-right" id="mynavbar">
+                        <ul class="nav navbar-nav">
+{#                            <li ><a href="{% url 'all_tablets' %}">Список устройств</a></li>#}
+{#                            <li ><a href="{% url 'add_new_tablet' %}">Добавить новое</a></li>#}
+<!--                            <li ><a href="#">Переместить</a></li>-->
+                            <li><a href="../../admin"><span class="glyphicon glyphicon-cog"></span> Admin</a></li>
+                            <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span>
+                                Logout <b>{{ username }}</b></a></li>
+                        </ul>
+                    </div>
+                    {% else %}
+                    <div class="collapse navbar-collapse navbar-right" id="mynavbar">
+                        <ul class="nav navbar-nav">
+                            <li><a href="{% url 'logon' %}"><span class="glyphicon glyphicon-user"></span> Logon</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+        <!--/ nav-->
+
+        {% block content %}
+
+
+        {% endblock %}
+
+
+        <footer class="" id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-7 footer-copyright">
+                        © Alexandr.Didenko, 2017-2022.
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!---->
+        <!--contact ends-->
+        <script src="../../static/main_page/js/jquery.min.js"></script>
+        <script src="../../static/main_page/js/jquery.easing.min.js"></script>
+        <script src="../../static/main_page/js/bootstrap.min.js"></script>
+        <script src="../../static/main_page/js/wow.js"></script>
+        <script src="../../static/main_page/js/custom.js"></script>
+    </div>
+</header>
+
+<!--отключение прелоадера страницы-->
+<script>
+    jQuery(document).ready(function ($) {
+        $(window).load(function () {
+            setTimeout(function () {
+                $('.preloader').fadeOut('slow', function () {
+                });
+            }, 200);
+
+        });
+    });
+</script>
+<!--отключение прелоадера страницы-->
+
+</body>
+</html>
