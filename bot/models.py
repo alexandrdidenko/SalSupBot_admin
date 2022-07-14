@@ -85,7 +85,7 @@ class Staff(models.Model):
     m2 = models.CharField(max_length=300, null=True, blank=True)
     m3 = models.CharField(max_length=300, null=True, blank=True)
     m4 = models.CharField(max_length=300, null=True, blank=True)
-    # orgstructureid = models.CharField(max_length=37, null=True, blank=True, unique=True)
+    orgstructureid = models.CharField(max_length=37, null=True, blank=True, unique=True)
 
     class Meta:
         db_table = "[bot].[view_staff]"
@@ -104,7 +104,7 @@ class Inventory(models.Model):
     src = models.ImageField(height_field=None, width_field=None, max_length=100)
     model = models.CharField(max_length=50, null=True, blank=True)
     # org_id = models.CharField(max_length=50, null=True, blank=True)
-    org = models.OneToOneField(to=Staff, on_delete=models.CASCADE)
+    org = models.OneToOneField(to=Staff, to_field='orgstructureid', on_delete=models.DO_NOTHING)
     shot = models.IntegerField(null=True, blank=True)
     dlm = models.DateTimeField(null=True, blank=True)
     sn = models.CharField(max_length=50, null=True, blank=True)
