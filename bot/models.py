@@ -76,16 +76,40 @@ class Users(models.Model):
         return str(self.last_name) + ' ' + str(self.first_name)
 
 
+class Staff(models.Model):
+    """Моделмь персонала"""
+    Chanel = models.CharField(db_column='Тип деятельностьи', max_length=300, null=True, blank=True)
+    Level = models.CharField(max_length=50, null=True, blank=True)
+    Name = models.CharField(max_length=300, null=True, blank=True)
+    Sector = models.CharField(db_column='Сектор', max_length=300, null=True, blank=True)
+    m2 = models.CharField(max_length=300, null=True, blank=True)
+    m3 = models.CharField(max_length=300, null=True, blank=True)
+    m4 = models.CharField(max_length=300, null=True, blank=True)
+    # orgstructureid = models.CharField(max_length=37, null=True, blank=True, unique=True)
+
+    class Meta:
+        db_table = "[bot].[view_staff]"
+        verbose_name = 'Персонал'
+        verbose_name_plural = 'Персонал'
+
+    def publish(self):
+        self.save()
+
+    def __str__(self):
+        return self.m4 + r' \ ' + self.m3 + r' \ ' + self.Name
+
+
 class Inventory(models.Model):
     """Моделмь инвенты планшетов"""
     src = models.ImageField(height_field=None, width_field=None, max_length=100)
     model = models.CharField(max_length=50, null=True, blank=True)
-    org_id = models.CharField(max_length=50, null=True, blank=True)
+    # org_id = models.CharField(max_length=50, null=True, blank=True)
+    org = models.OneToOneField(to=Staff, on_delete=models.CASCADE)
     shot = models.IntegerField(null=True, blank=True)
     dlm = models.DateTimeField(null=True, blank=True)
     sn = models.CharField(max_length=50, null=True, blank=True)
     imei2 = models.CharField(max_length=50, null=True, blank=True)
-    check_info = models.IntegerField(null=True, blank=True)
+    check_info = models.BooleanField(null=True, blank=True)
     imei1 = models.CharField(max_length=50, null=True, blank=True)
     user_id = models.BigIntegerField(null=False, unique=True)
 
@@ -98,4 +122,4 @@ class Inventory(models.Model):
         self.save()
 
     def __str__(self):
-        return str(self.org_id)
+        return str(self.org)
