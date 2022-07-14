@@ -101,7 +101,7 @@ class Staff(models.Model):
 
 class Inventory(models.Model):
     """Моделмь инвенты планшетов"""
-    src = models.ImageField(height_field=None, width_field=None, max_length=100)
+    file_name = models.ImageField(height_field=None, width_field=None, max_length=100)
     model = models.CharField(max_length=50, null=True, blank=True)
     # org_id = models.CharField(max_length=50, null=True, blank=True)
     org = models.OneToOneField(to=Staff, to_field='orgstructureid', on_delete=models.DO_NOTHING, null=True, blank=True)
