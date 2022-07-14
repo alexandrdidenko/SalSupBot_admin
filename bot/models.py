@@ -104,7 +104,7 @@ class Inventory(models.Model):
     src = models.ImageField(height_field=None, width_field=None, max_length=100)
     model = models.CharField(max_length=50, null=True, blank=True)
     # org_id = models.CharField(max_length=50, null=True, blank=True)
-    org = models.OneToOneField(to=Staff, to_field='orgstructureid', on_delete=models.DO_NOTHING)
+    org = models.OneToOneField(to=Staff, to_field='orgstructureid', on_delete=models.DO_NOTHING, null=True, blank=True)
     shot = models.IntegerField(null=True, blank=True)
     dlm = models.DateTimeField(null=True, blank=True)
     sn = models.CharField(max_length=50, null=True, blank=True)
@@ -114,7 +114,7 @@ class Inventory(models.Model):
     user_id = models.BigIntegerField(null=False, unique=True)
 
     class Meta:
-        db_table = "[bot].[inventory_test]"
+        db_table = "[bot].[bot_inventory]"
         verbose_name = 'Инвентаризация'
         verbose_name_plural = 'Инвентаризация'
 

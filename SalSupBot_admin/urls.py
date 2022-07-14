@@ -21,7 +21,7 @@ from SalSupBot_admin import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', admin.site.urls),  # сразу напрявляем в админку
+    # path('*', admin.site.urls),  # сразу напрявляем в админку
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

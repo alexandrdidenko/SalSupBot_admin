@@ -54,7 +54,7 @@ class InventoryAdmin(admin.ModelAdmin):
     Отображение картинки брал здесь https://dvmn.org/encyclopedia/django/how-to-setup-image-preview/
     """
     list_display = ( 'user_id', 'org', 'model', 'sn', 'imei1', 'imei2', 'check_info', 'src')
-    list_filter = ('check_info',)
+    list_filter = ('check_info', 'dlm')
     search_fields = ('org','model', 'sn', 'imei1', 'imei2')
     readonly_fields = ['user_id', 'model', "preview", 'org']
     fields = ['user_id', 'model', 'sn', 'imei1', 'imei2', 'check_info', 'src', 'preview']
