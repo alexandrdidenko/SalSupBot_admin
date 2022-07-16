@@ -38,30 +38,30 @@
                                 data-target="#mynavbar" aria-expanded="false" aria-controls="navbar">
                             <span class="fa fa-bars"></span>
                         </button>
-                        <a href="/" class="navbar-brand">TechSalesUA</a>
+                        <a href="/" class="navbar-brand">Digital Sales Support</a>
                     </div>
                     {% if username %}
-                    <div class="collapse navbar-collapse navbar-right" id="mynavbar">
-                        <ul class="nav navbar-nav">
-                            <!--<li class="active"><a href="#header">Home</a></li>-->
-                            <li ><a href="{% url 'all_tablets' %}">Список устройств</a></li>
-                            <li ><a href="{% url 'add_new_tablet' %}">Добавить новое</a></li>
-<!--                            <li ><a href="#">Переместить</a></li>-->
-<!--                            <li class="dropdown">-->
-<!--                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Отчеты<b-->
-<!--                                        class="caret"></b></a>-->
-<!--                                <ul class="dropdown-menu">-->
-<!--                                    <li><a href="#">add new tablet</a></li>-->
-<!--                                    <li><a href="#">all tablets</a></li>-->
-<!--                                    <li><a href="#">not in tablets</a></li>-->
-<!--                                    <li><a href="#">not use several day</a></li>-->
-<!--                                </ul>-->
-<!--                            </li>-->
-                            <li><a href="../../admin"><span class="glyphicon glyphicon-cog"></span> Admin</a></li>
-                            <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span>
-                                Logout <b>{{ username }}</b></a></li>
-                        </ul>
-                    </div>
+                        <div class="collapse navbar-collapse navbar-right" id="mynavbar">
+                            <ul class="nav navbar-nav">
+                                <!--<li class="active"><a href="#header">Home</a></li>-->
+                                <li><a href="{% url 'all_tablets' %}">Список устройств</a></li>
+                                {#                            <li ><a href="{% url 'add_new_tablet' %}">Добавить новое</a></li>#}
+                                <!--                            <li ><a href="#">Переместить</a></li>-->
+                                <!--                            <li class="dropdown">-->
+                                <!--                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Отчеты<b-->
+                                <!--                                        class="caret"></b></a>-->
+                                <!--                                <ul class="dropdown-menu">-->
+                                <!--                                    <li><a href="#">add new tablet</a></li>-->
+                                <!--                                    <li><a href="#">all tablets</a></li>-->
+                                <!--                                    <li><a href="#">not in tablets</a></li>-->
+                                <!--                                    <li><a href="#">not use several day</a></li>-->
+                                <!--                                </ul>-->
+                                <!--                            </li>-->
+                                <li><a href="../../admin"><span class="glyphicon glyphicon-cog"></span> Admin</a></li>
+                                <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span>
+                                    Logout <b>{{ username }}</b></a></li>
+                            </ul>
+                        </div>
                     {% endif %}
                 </div>
             </div>
@@ -78,7 +78,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-7 footer-copyright">
-                        © Alexandr.Didenko, 2017.
+                        © Alexandr.Didenko, 2017-2022.
                     </div>
                 </div>
             </div>
@@ -93,7 +93,6 @@
         <!--<script src="contactform/contactform.js"></script>-->
     </div>
 </header>
-
 
 
 </body>

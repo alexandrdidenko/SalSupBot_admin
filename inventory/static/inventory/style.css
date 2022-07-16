@@ -1,0 +1,76 @@
+
+
+.navbar-default, .dropdown-menu{
+    /*background-color: #191919;*/
+    background-color: currentColor;
+
+}
+
+/*.tablet {*/
+    /*margin-left: 20px;*/
+    /*margin-bottom: 25px;*/
+    /*padding-top: 10px;*/
+/*}*/
+
+.tablet {
+    margin-left: 20px;
+    margin-bottom: 25px;
+    /* min-width: 500px; */
+    min-height: 300px;
+    /* margin-top: -8px; */
+}
+
+.mytable {
+    padding-top: 120px;
+    /*width: 100%;*/
+    /*background: white;*/
+    /*min-height: 576px;*/
+    /*font-size: smaller;*/
+    /*padding-top: 20vh;*/
+    width: 100vw;
+    background: white;
+    font-size: smaller;
+    min-height: 92vh;
+    overflow-x: scroll;
+}
+
+
+/*.my_container {*/
+    /*!*height: 900px;*!*/
+
+    /*padding-top: 110px;*/
+    /*!*min-height: 816px;*!*/
+    /*height: auto;*/
+    /*background: white;*/
+/*}*/
+
+.my_container {
+    min-height: 92vh;
+    background-color: cornsilk;
+    /* margin-top: 10vh; */
+    padding-top: 130px;
+}
+
+
+.my_btn{
+    padding-left: 15px;
+
+}
+.name{
+    font-size: 26px;
+    font-weight: bold;
+    font-variant-caps: all-petite-caps;
+    /*margin-left: 560px;*/
+}
+
+/*.container-fluid {*/
+    /*padding-right: 15px;*/
+    /*padding-left: 15px;*/
+    /*margin-right: auto;*/
+    /*margin-left: auto;*/
+    /*padding-top: 70px;*/
+/*}*/
+
+.error{
+    color: red;
+}

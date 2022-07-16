@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main_page.urls')),
     path('', include('authorization.urls')),
+    path('', include('inventory.urls')),
     # path('*', admin.site.urls),  # сразу напрявляем в админку
 ]
 if settings.DEBUG:
