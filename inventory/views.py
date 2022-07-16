@@ -24,7 +24,7 @@ def all_tablets_view(request):
         username = ''
         return redirect('/logon')
     else:
-        all_tablets = Inventory.objects.raw('select TOP 30 * from [bot].[bot_inventory]')
+        all_tablets = Inventory.objects.raw('select * from [bot].[bot_inventory]')
         arg = {
             'username': username,
             'all_tablets': all_tablets,

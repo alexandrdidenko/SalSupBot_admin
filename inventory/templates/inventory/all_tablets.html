@@ -92,12 +92,12 @@
     <div class="limiter">
         <div class="container-table100">
             <div class="wrap-table100" id='mydata'>
-                <div class="table100">
+                <div class="table100" >
                     <table>
                         <thead>
                         <tr class="table100-head">
                             <th>id</th>
-                            <th>user_id.</th>
+                            <th>user_id</th>
                             <th>model</th>
                             <th>sn</th>
                             <th>imei1</th>
@@ -124,6 +124,7 @@
                                 <td> {{ tablet.imei2 }}</td>
                                 <td> {{ tablet.check_info }}</td>
                                 <td> {{ tablet.dlm }}</td>
+                                <td> {{ tablet.file_name }}</td>
                             </tr>
                         {% endfor %}
                     </table>
