@@ -21,17 +21,28 @@
 }
 
 .mytable {
-    padding-top: 120px;
+
     /*width: 100%;*/
     /*background: white;*/
     /*min-height: 576px;*/
     /*font-size: smaller;*/
     /*padding-top: 20vh;*/
+
     width: 100vw;
     background: white;
     font-size: smaller;
     min-height: 92vh;
     overflow-x: scroll;
+    padding-top: 120px;
+
+
+
+    /*background: -webkit-linear-gradient(45deg, #4158d0, #c850c0);*/
+    /*background: -o-linear-gradient(45deg, #4158d0, #c850c0);*/
+    /*background: -moz-linear-gradient(45deg, #4158d0, #c850c0);*/
+    /*background: linear-gradient(45deg, #4158d0, #c850c0);*/
+
+    /*padding: 33px 30px;*/
 }
 
 
@@ -73,4 +84,9 @@
 
 .error{
     color: red;
+}
+
+.my_thead{
+    color: white;
+    background-color: #5e5e5e;
 }

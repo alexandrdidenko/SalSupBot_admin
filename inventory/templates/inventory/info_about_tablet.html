@@ -1,0 +1,120 @@
+{% extends 'main_page/base_template2.html' %}
+
+{% block title %}
+edit
+{% endblock %}
+
+{% block content %}
+
+<!--  скрипт для сайта гугл анализи  -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-104987959-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-104987959-1');
+</script>
+
+
+<link href="../../static/inventory/style.css" rel="stylesheet">
+
+<link href="../../static/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+
+<div class="my_container">
+    <div class="tablet">
+        <div class="col-xs-12 col-md-12">
+            <h1> Детальная информация о планшете</h1>
+        </div>
+        <div class="bat">
+        </div>
+        <div class="col-xs-5 col-md-6 col-lg-6">
+            <p> org - <b>{{ tablet.org }} </b></p>
+            <p> model - <b>{{ tablet.model }} </b></p>
+            <p> sn - <b>{{ tablet.sn }} </b></p>
+            <p> imei1 - <b>{{ tablet.imei1 }} </b></p>
+            <p> imei2 - <b>{{ tablet.imei2 }} </b></p>
+            <p> check_info - <b>{{ tablet.check_info }} </b></p>
+            <p> dlm - <b>{{ tablet.dlm }} </b></p>
+
+        </div>
+        <div class="col-xs-5 col-md-6 col-lg-6">
+            <img src="../../../media/{{ tablet.file_name }}" width="300" >
+{#            <p> Дата списания - <b>{{ tablet.Decommissioning_date }} </b></p>#}
+{#            <p> Место хранения - <b>{{ tablet.customers_cust_id }} </b></p>#}
+{#            <p> Дистр - <b>{{ tablet.customers_cust_id.distr_name }} </b></p>#}
+{#            <p> Регион - <b>{{ tablet.customers_cust_id.region_name }} </b></p>#}
+{#            <p> Кто использует - <b>{{ tablet.who_uses.name }} </b></p>#}
+{#            <p> Создано - <b>{{ tablet.created }} </b></p>#}
+{#            <p> Обновлено - <b>{{ tablet.updated }} </b></p>#}
+{#            <p> Пользователь - <b>{{ tablet.updated_by }} </b></p>#}
+        </div>
+    </div>
+    <!--    <a class="btn btn-default" onclick="history.back(-1); return false;"><span-->
+    <!--            class="glyphicon glyphicon-arrow-left"></span></a>-->
+    <a class="btn btn-default" href="{% url 'inventory_list'%}"><span
+            class="glyphicon glyphicon-arrow-left"></span></a>
+    <a class="btn btn-default" href="{% url 'edit_tablet' pk=tablet.pk %}"><span
+            class="glyphicon glyphicon-pencil"></span></a>
+{#    <a class="btn btn-default" href="{% url 'delete_tablet' pk=tablet.pk %}"><span#}
+{#            class="glyphicon glyphicon-trash"></span></a>#}
+
+    <!-- --------------------------информация по движению по планшету ----------------------------------------- -->
+    <!--    <div class="container mytable">-->
+{#    <table class="table table-striped table-bordered table-hover col-sm-1 col-md-1" id='mydata'>#}
+{#        <thead>#}
+{#        <tr>#}
+{#            <th>IMEI 1</th>#}
+{#            <th>IMEI 2</th>#}
+{#            <th>Серийный номер</th>#}
+{#            <th>Модель</th>#}
+{#            <th>Тех. состояние</th>#}
+{#            <th>Дата покупки</th>#}
+{#            <th>Коментарий</th>#}
+{#            <th>Место хранения</th>#}
+{#            <th>Координатор</th>#}
+{#            <th>ОБД</th>#}
+{#            <!--                <th>Дистр</th>-->#}
+{#            <!--                <th>Регион</th>-->#}
+{#            <th>Кто использует</th>#}
+{#            <th>Обновлено</th>#}
+{#            <th>Пользователь</th>#}
+{##}
+{#        </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#        {% for hist in history %}#}
+{#        <tr>#}
+{#            <!--                <td><a href="{% url 'info_about_tablet' pk=tablet.pk %}"> {{ tablet.id }} </a></td>-->#}
+{#            <td> {{ hist.IMEI_1_h }}</td>#}
+{#            <td> {{ hist.IMEI_2_h }}</td>#}
+{#            <td> {{ hist.device_number_h }}</td>#}
+{#            <td> {{ hist.device_model_id_h }}</td>#}
+{#            <td> {{ hist.technical_condition_id_h }}</td>#}
+{#            <td> {{ hist.purchase_date_h }}</td>#}
+{#            <td> {{ hist.coment_h }}</td>#}
+{#            <td> {{ hist.customers_cust_id_h }}</td>#}
+{#            <td> {{ hist.ssc_id_h }}</td>#}
+{#            <td> {{ hist.obd_id_h }}</td>#}
+{#            <td> {{ hist.who_uses_h }}</td>#}
+{#            <td> {{ hist.updated_h }}</td>#}
+{#            <td> {{ hist.updated_by_h }}</td>#}
+{##}
+{##}
+{#        </tr>#}
+{#        {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
+    <!--    </div>-->
+
+
+</div>
+
+
+{% endblock %}

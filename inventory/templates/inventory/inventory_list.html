@@ -1,0 +1,108 @@
+{% extends 'main_page/base_template2.html' %}
+
+{% block title %}
+    all tablets
+{% endblock %}
+
+{% block content %}
+
+    <!--  скрипт для сайта гугл анализи  -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-104987959-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-104987959-1');
+    </script>
+
+    <!--старт прелоадера страницы-->
+    <div class="preloader"></div>
+    <!--старт прелоадера страницы-->
+
+
+    <!--<link href="../../static/datatables/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="../../static/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="../../static/inventory/style.css" rel="stylesheet">
+
+
+    <div class="container mytable">
+        <table class="table table-striped table-bordered table-hover col-sm-1 col-md-1" id='mydata'>
+            <div class="my_btn">
+                <a class="btn btn-warning col-xs-1 col-md-1" href=""
+                   title="Экспорт в excel"><span
+                        class="glyphicon glyphicon-save-file"></span></a>
+            </div>
+            <div class="name">
+                <a class="col-xs-4 col-md-4">Список всех планшетов</a>
+            </div>
+
+            <thead class="my_thead">
+            <tr>
+                <th>инфо</th>
+                <th>ред.</th>
+                <th>m4</th>
+                <th>m3</th>
+                <th>m2</th>
+                <th>Name</th>
+                <th>model</th>
+                <th>sn</th>
+                <th>imei1</th>
+                <th>imei2</th>
+                <th>check_info</th>
+                <th>dlm</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for tablet in all_tablets %}
+                <tr>
+                    <td><a class="glyphicon glyphicon-info-sign" href="{% url 'info_about_tablet' pk=tablet.pk %}"></a>
+                    </td>
+                    <td><a class="glyphicon glyphicon-edit" href="{% url 'edit_tablet' pk=tablet.pk %}"
+                           role="button"></a></td>
+                    <td> {{ tablet.m4 }}</td>
+                    <td> {{ tablet.m3 }}</td>
+                    <td> {{ tablet.m2 }}</td>
+                    <td> {{ tablet.Name }}</td>
+                    <td> {{ tablet.model }}</td>
+                    <td> {{ tablet.sn }}</td>
+                    <td> {{ tablet.imei1 }}</td>
+                    <td> {{ tablet.imei2 }}</td>
+                    <td> {{ tablet.check_info }}</td>
+                    <td> {{ tablet.dlm }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="../../static/datatables/js/jquery.js"></script>
+
+    <script src="../../static/datatables/js/bootstrap.min.js"></script>
+    <script src="../../static/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../../static/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $('#mydata').dataTable()
+    </script>
+
+    <!--отключение прелоадера страницы-->
+    <script>
+        jQuery(document).ready(function ($) {
+            $(window).load(function () {
+                setTimeout(function () {
+                    $('.preloader').fadeOut('slow', function () {
+                    });
+                }, 200);
+
+            });
+        });
+    </script>
+    <!--отключение прелоадера страницы-->
+
+
+{% endblock %}

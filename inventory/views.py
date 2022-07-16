@@ -17,7 +17,7 @@ from django.http import HttpResponse, HttpResponseForbidden
 from django.contrib.auth.models import User
 
 
-def all_tablets_view(request):
+def inventory_list_view(request):
     username = auth.get_user(request)
 
     if username.is_anonymous:
@@ -29,4 +29,64 @@ def all_tablets_view(request):
             'username': username,
             'all_tablets': all_tablets,
         }
-        return render(request, 'inventory/all_tablets.html', arg)
+        return render(request, 'inventory/inventory_list.html', arg)
+
+
+def info_about_tablet_view(request, pk):
+    # not_in_tablets = Tbl_tablets_list.objects.raw('''call pda_sp_not_in_tablets_list()''')
+
+    username = auth.get_user(request)
+    # print(username.pk)
+
+    if username.is_anonymous:
+        username = ''
+        return redirect('/logon')
+    else:
+        tablet = get_object_or_404(Inventory, pk=pk)
+        history = Inventory.objects.raw(
+            '''SELECT * FROM bot.bot_inventory where id = ('%s') order by id  DESC''' % pk)
+        arg = {
+            'username': username,
+            'tablet': tablet,
+            'history': history,
+
+        }
+
+        return render(request, 'inventory/info_about_tablet.html', arg)
+
+
+def edit_tablet_view(request, pk):
+    pass
+    username = auth.get_user(request)
+    username_id = auth.get_user(request).pk
+
+    def my_custom_sql(query):
+        cursor = connection.cursor()
+        cursor.execute(query)
+        result = cursor.fetchall()
+        return None
+
+    if username.is_anonymous:
+        username = ''
+        return redirect('/logon')
+    else:
+        post = get_object_or_404(Inventory, pk=pk)
+        if request.method == "POST":
+            form = Tbl_tablet_list_Form(request.POST, instance=post)
+            if form.is_valid():
+                tablet = form.save(commit=False)
+                tablet.dlm = timezone.now()
+                tablet.save()
+                pk = str(tablet.id)
+
+                # my_custom_sql('''call pda_sp_inHistory ('%s')''' % pk)
+
+                return redirect('/info_about_tablet/' + pk)
+        else:
+            form = Tbl_tablet_list_Form(instance=post)
+
+    arg = {
+        'username': username,
+        'form': form
+    }
+    return render(request, 'inventory/add_new_tablet.html', arg)

@@ -1,0 +1,129 @@
+{% extends 'main_page/base_template2.html' %}
+
+{% block title %}
+    add
+{% endblock %}
+
+{% block content %}
+
+    <!--  скрипт для сайта гугл анализи  -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-104987959-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-104987959-1');
+    </script>
+
+    <link href="../../static/inventory/style.css" rel="stylesheet">
+
+    <div class="my_container">
+        <div class="container">
+            <h1>New tablet</h1>
+            {% if error %}
+                <div class="error">
+                    <label class="error">{{ error }}</label>
+                </div>
+            {% endif %}
+            <form class="col-md-12 col-lg-12 form-horizontal" method="POST">{% csrf_token %}
+                <div class="col-md-6 col-lg-6 form-group">
+                    <label for="#" class="col-md-4 col-lg-4 control-label disabled">model</label> <!-- 1 -->
+                    <div class="col-md-8 col-lg-8">
+                        {{ form.model }}
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 form-group">
+                    <label for="#" class="col-md-4 col-lg-4 control-label">sn</label><!-- 8 -->
+                    <div class="col-md-8 col-lg-8">
+                        {{ form.sn }}
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 form-group">
+                    <label for="#" class="col-md-4 col-lg-4 control-label">imei1</label><!-- 2 -->
+                    <div class="col-md-8 col-lg-8">
+                        {{ form.imei1 }}
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 form-group">
+                    <label for="#" class="col-md-4 col-lg-4 control-label">imei2</label><!-- 9 -->
+                    <div class="col-md-8 col-lg-8">
+                        {{ form.imei2 }}
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 form-group">
+                    <label for="#" class="col-md-4 col-lg-4 control-label">check_info</label><!-- 3 -->
+                    <div class="col-md-8 col-lg-8">
+                        {{ form.check_info }}
+                    </div>
+                </div>
+
+                {#            <div class="col-md-6 col-lg-6 form-group">#}
+                {#                <label for="#" class="col-md-4 col-lg-4 control-label">ОБД</label><!-- 10 -->#}
+                {#                <div class="col-md-8 col-lg-8">#}
+                {#                    {{ form.obd_id}}#}
+                {#                </div>#}
+                {#            </div>#}
+                {#            <div class="col-md-6 col-lg-6 form-group">#}
+                {#                <label for="#" class="col-md-4 col-lg-4 control-label">Модель</label><!-- 4 -->#}
+                {#                <div class="col-md-8 col-lg-8">#}
+                {#                    {{ form.device_model_id }}#}
+                {#                </div>#}
+                {#            </div>#}
+                {#            <div class="col-md-6 col-lg-6 form-group">#}
+                {#                <label for="#" class="col-md-4 col-lg-4 control-label">Кто использует</label><!-- 11 -->#}
+                {#                <div class="col-md-8 col-lg-8">#}
+                {#                    {{ form.who_uses }}#}
+                {#                </div>#}
+                {#            </div>#}
+                {#            <div class="col-md-6 col-lg-6 form-group">#}
+                {#                <label for="#" class="col-md-4 col-lg-4 control-label">Собственность</label><!-- 5 -->#}
+                {#                <div class="col-md-8 col-lg-8">#}
+                {#                    {{ form.owners_id }}#}
+                {#                </div>#}
+                {#            </div>#}
+                {#            <div class="col-md-6 col-lg-6 form-group">#}
+                {#                <label for="#" class="col-md-4 col-lg-4 control-label">Дата списания</label><!-- 12 -->#}
+                {#                <div class="col-md-8 col-lg-8">#}
+                {#                    {{ form.Decommissioning_date }}#}
+                {#                </div>#}
+                {#            </div>#}
+                {#            <div class="col-md-6 col-lg-6 form-group">#}
+                {#                <label for="#" class="col-md-4 col-lg-4 control-label">Тех. состояние</label><!-- 6 -->#}
+                {#                <div class="col-md-8 col-lg-8">#}
+                {#                    {{ form.technical_condition_id }}#}
+                {#                </div>#}
+                {#            </div>#}
+                {#            <div class="col-md-6 col-lg-6 form-group">#}
+                {#                <label for="#" class="col-md-4 col-lg-4 control-label">Коментарий</label><!-- 13 -->#}
+                {#                <div class="col-md-8 col-lg-8">#}
+                {#                    {{ form.coment }}#}
+                {#                </div>#}
+                {#            </div>#}
+                {#            <div class="col-md-6 col-lg-6 form-group">#}
+                {#                <label for="#" class="col-md-4 col-lg-4 control-label">Дата покупки</label><!-- 7 -->#}
+                {#                <div class="col-md-8 col-lg-8">#}
+                {#                    {{ form.purchase_date }}#}
+                {#                </div>#}
+                {#            </div>#}
+            <div>
+
+                <img src="../../../media/photo_2022-07-13_23-03-07.jpg" width="300" alt="Нет фото">
+
+            </div>
+            </form>
+            <input type="button" class="col-md-1 save btn btn-default" onclick="history.back(-1); return false;"
+                   value="Отменить"/>
+            <button type="submit" class="col-md-1 save btn btn-default">Сохранить</button>
+
+
+
+        </div>
+    </div>
+
+{% endblock %}

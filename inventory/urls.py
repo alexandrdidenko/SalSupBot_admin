@@ -3,7 +3,10 @@ from django.urls import path
 from django.conf.urls import include
 
 urlpatterns = [
-    path('all_tablets/', views.all_tablets_view, name='all_tablets'),
+    path('inventory_list/', views.inventory_list_view, name='inventory_list'),
+    path('info_about_tablet/<str:pk>', views.info_about_tablet_view, name='info_about_tablet'),
+    path('info_about_tablet/<str:pk>/edit', views.edit_tablet_view, name='edit_tablet'),
+
     # path('', include(('home.urls', 'home'), namespace='home'))
 
 

@@ -1,0 +1,69 @@
+{% extends 'main_page/base_template2.html' %}
+
+{% block title %}
+    info about tablet
+{% endblock %}
+
+{% block content %}
+
+<!--  скрипт для сайта гугл анализи  -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-104987959-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-104987959-1');
+</script>
+
+
+    {#    <link href="../../static/datatables/css/bootstrap.min.css" rel="stylesheet">#}
+    <link href="../../static/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="../../static/inventory/style.css" rel="stylesheet">
+
+{#    <div class="my_container">#}
+        {#Хлебные крошки#}
+{#        <div>#}
+{#            <ol id="breadcrumb">#}
+{#                <li>#}
+{#                    <a href="{% url 'base_page' %}"><i class="glyphicon glyphicon-home"></i>#}
+{#                        <span class="sr-only">Home</span></a>#}
+{#                </li>#}
+                {#                    <li>#}
+                {#                        <a href="{% url 'tablets' %}">Tablets</a>#}
+                {#                    </li>#}
+                {#        <li>#}
+                {#            <a href="#">Процессы</a>#}
+                {#        </li>#}
+{#                <li class="current">#}
+{#                    <a href="#">info about tablet</a>#}
+{#                </li>#}
+{#            </ol>#}
+{##}
+{#        </div>#}
+        <div class="container mytable">
+            info about tablet
+
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-xs btn-primary">Find</button>
+                <span class="help-block">Ввседите IMEI или SN номер.</span>
+            </form>
+
+
+        </div>
+    </div>
+
+
+    <script src="../../static/datatables/js/jquery.js"></script>
+
+    <script src="../../static/datatables/js/bootstrap.min.js"></script>
+    <script src="../../static/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../../static/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+
+    </script>
+{% endblock %}
