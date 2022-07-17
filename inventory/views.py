@@ -24,7 +24,28 @@ def inventory_list_view(request):
         username = ''
         return redirect('/logon')
     else:
-        all_tablets = Inventory.objects.raw('select * from [bot].[view_inventory_staff]')
+        all_tablets = Inventory.objects.raw('''select s.file_name,
+       RNK,
+       id,
+       user_id,
+       dlm,
+       case
+           when check_info = 1 then 'Ok'
+           when check_info = 0 then 'Not ok!'
+           else '' end as [check_info],
+        IIF(imei2 is null, '', imei2) as [imei2],
+       IIF(imei1 is null, '', imei1) as [imei1],
+       IIF(sn is null, '', sn) as [sn],
+       model,
+       type,
+       Level,
+       Name,
+       sector,
+       m2,
+       m3,
+       m4
+from [bot].[view_inventory_staff] s
+order by dlm DESC''')
         arg = {
             'username': username,
             'all_tablets': all_tablets,
@@ -56,7 +77,6 @@ def info_about_tablet_view(request, pk):
 
 
 def edit_tablet_view(request, pk):
-
     username = auth.get_user(request)
     username_id = auth.get_user(request).pk
 
@@ -67,6 +87,7 @@ def edit_tablet_view(request, pk):
         cursor.close()
         connection.close()
         return result
+
     sql = '''SELECT file_name FROM bot.bot_inventory where id = {pk}'''.format(pk=pk)
     my_file = my_custom_sql(sql)
 
