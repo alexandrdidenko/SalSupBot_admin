@@ -56,7 +56,7 @@ def info_about_tablet_view(request, pk):
 
 
 def edit_tablet_view(request, pk):
-    pass
+
     username = auth.get_user(request)
     username_id = auth.get_user(request).pk
 
@@ -64,7 +64,11 @@ def edit_tablet_view(request, pk):
         cursor = connection.cursor()
         cursor.execute(query)
         result = cursor.fetchall()
-        return None
+        cursor.close()
+        connection.close()
+        return result
+    sql = '''SELECT file_name FROM bot.bot_inventory where id = {pk}'''.format(pk=pk)
+    my_file = my_custom_sql(sql)
 
     if username.is_anonymous:
         username = ''
@@ -72,7 +76,7 @@ def edit_tablet_view(request, pk):
     else:
         post = get_object_or_404(Inventory, pk=pk)
         if request.method == "POST":
-            form = Tbl_tablet_list_Form(request.POST, instance=post)
+            form = Tbl_tablet_list_Form(request.POST, request.FILES, instance=post)
             if form.is_valid():
                 tablet = form.save(commit=False)
                 tablet.dlm = timezone.now()
@@ -84,9 +88,10 @@ def edit_tablet_view(request, pk):
                 return redirect('/info_about_tablet/' + pk)
         else:
             form = Tbl_tablet_list_Form(instance=post)
-
+    print(my_file)
     arg = {
         'username': username,
-        'form': form
+        'form': form,
+        'my_file': my_file[0][0]
     }
     return render(request, 'inventory/add_new_tablet.html', arg)

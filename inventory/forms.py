@@ -11,6 +11,7 @@ class Tbl_tablet_list_Form(forms.ModelForm):
             'imei1',
             'imei2',
             'check_info',
+            'file_name'
             # 'customers_cust_id',
             # 'who_uses',
             # 'purchase_date',
@@ -26,6 +27,7 @@ class Tbl_tablet_list_Form(forms.ModelForm):
             'imei1': forms.TextInput(attrs={'class': 'form-control'}),
             'imei2': forms.TextInput(attrs={'class': 'form-control'}),
             'check_info': forms.TextInput(attrs={'class': 'form-control'}),
+            'file_name': forms.FileInput()
             # 'customers_cust_id': forms.Select(attrs={'class': 'form-control'}),
             # 'who_uses': forms.Select(attrs={'class': 'form-control'}),
             # 'purchase_date': forms.DateInput(attrs={'placeholder': 'YYYY-MM-DD', 'class': 'form-control'}),
