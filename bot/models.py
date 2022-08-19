@@ -4,7 +4,7 @@ from django.utils import timezone
 
 class Roles(models.Model):
     """Модель ролей"""
-    role_name = models.CharField(max_length=20)
+    role_name = models.CharField(max_length=100)
 
     class Meta:
         db_table = "[bot].[bot_roles]"
