@@ -14,9 +14,9 @@ class InventoryAdmin(admin.ModelAdmin):
     Настраиваем отображение инвенты
     Отображение картинки брал здесь https://dvmn.org/encyclopedia/django/how-to-setup-image-preview/
     """
-    list_display = ('user_id', 'org', 'model', 'sn', 'imei1', 'imei2', 'check_info', 'dlm')
+    list_display = ('id', 'user_id', 'org', 'model', 'sn', 'imei1', 'imei2', 'check_info', 'dlm')
     list_filter = ('check_info', 'dlm')
-    search_fields = ('org',)
+    search_fields = ['user_id', 'id', 'sn', 'imei1', 'imei2']
     date_hierarchy = 'dlm'
     readonly_fields = ['user_id', 'model', "preview", 'org']
     fields = ['model', 'sn', 'imei1', 'imei2', 'check_info', 'file_name', 'preview']
@@ -33,16 +33,13 @@ class InventoryProgressAdmin(admin.ModelAdmin):
     Отображение картинки брал здесь https://dvmn.org/encyclopedia/django/how-to-setup-image-preview/
     """
     list_display = ('m4', 'm3', 'm2', 'sector', 'Name', 'Level', 'type', 'model', 'check_info', 'dlm')
-    list_filter = ( 'check_info', 'dlm', 'm4', 'Level', 'type')
+    list_filter = ('check_info', 'dlm', 'm4', 'Level', 'type')
     search_fields = ('m4', 'm3', 'm2', 'Name',)
     date_hierarchy = 'dlm'
     # readonly_fields = ['m4', 'm3', 'm2', 'sector', 'Name', 'Level', 'type', 'model', 'check_info', 'dlm' "preview"]
     fields = ['m4', 'm3', 'm2', 'sector', 'Name', 'Level', 'type', 'model', 'check_info', 'dlm', 'preview']
     # list_select_related = ['org', ]  # для ускорения загрузки таблицы https://habr.com/ru/post/322114/
     ordering = ['m4', 'm3', 'm2', 'sector', 'Name', ]
-
-
-
 
     def preview(self, obj):
         return mark_safe(f'<img src="{obj.file_name.url}" style="max-height: 700px;">')
